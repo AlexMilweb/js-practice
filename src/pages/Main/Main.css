@@ -1,0 +1,43 @@
+.Main {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Main-content {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 720px;
+}
+
+.Main-title {
+    margin-bottom: 50px;
+}
+
+.Main-logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Main-reactLogo {
+    width: 320px;
+    height: 183px;
+    background-image: url('./images/react-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.Main-jsLogo {
+    width: 120px;
+    height: 120px;
+    background-image: url('./images/js-logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.Main-paragraph {
+    margin-bottom: 20px;
+}
