@@ -2,7 +2,24 @@ import React, { PureComponent } from 'react';
 import { Nav, Navbar, NavbarBrand, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+const menuItems = [
+    {
+        link: '/contacts-search/',
+        text: 'Поиск по контактам'
+    }
+];
+
 export default class Header extends PureComponent {
+    renderMenuItem = item => {
+        return (
+            <li key={item.text}>
+                <Link to={item.link}>
+                    {item.text}
+                </Link>
+            </li>
+        );
+    }
+
     render() {
         return (
             <Navbar className='navbar-inverse navbar-fixed-top'>
@@ -15,16 +32,7 @@ export default class Header extends PureComponent {
                     <NavDropdown
                         title='Страницы с примерами'
                     >
-                        <li>
-                            <Link to='/'>
-                                Main page
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to='/contacts-search/'>
-                                Contacts search
-                            </Link>
-                        </li>
+                        {menuItems.map(this.renderMenuItem)}
                     </NavDropdown>
                 </Nav>    
                 <p className='navbar-text navbar-right'>Автор: Александр Милютин</p>
