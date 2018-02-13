@@ -4,3 +4,11 @@ body {
   padding-top: 70px;
   font-family: sans-serif;
 }
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
