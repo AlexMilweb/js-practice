@@ -6,6 +6,10 @@ const menuItems = [
     {
         link: '/contacts-search/',
         text: 'Поиск по контактам'
+    },
+    {
+        link: '/life-cycle/',
+        text: 'Демострация работы жизненного цикла компонента'
     }
 ];
 

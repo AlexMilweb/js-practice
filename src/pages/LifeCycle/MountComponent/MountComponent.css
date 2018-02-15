@@ -1,0 +1,102 @@
+.mountComponent {
+    margin-top: 30px;
+    border: 3px solid rgb(64, 199, 64);
+    border-radius: 6px;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.mountComponent__wrapper {
+    padding: 15px;
+}
+
+.mountComponent__title {
+    margin: 0;
+    padding: 5px 15px;
+    background-color: rgb(64, 199, 64);
+    color: white;
+}
+
+.mountComponent__text {
+    margin-bottom: 20px;
+}
+
+.screen {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.screenItem {
+    padding: 10px;
+    margin-bottom: 5px;
+    animation-name: fadeIn;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.screenItem_setState {
+    background-color: rgb(12, 20, 124) ;
+    color: white;
+}
+
+.screenItem_render {
+    background-color: Aquamarine ;
+    color: black;
+}
+
+.screenItem_getInitialState {
+    background-color: DeepSkyBlue;
+    color: white;
+}
+
+.screenItem_componentWillMount {
+    background-color: orange;
+    color: white;
+}
+
+.screenItem_componentDidMount {
+    background-color: purple;
+    color: white;
+}
+
+.screenItem_getDefaultProps {
+    background-color: grey;
+    color: white;
+}
+
+.screenItem_componentWillReceiveProps {
+    background-color: HotPink;
+    color: white;
+}
+
+.screenItem_componentWillUpdate {
+    background-color: CornflowerBlue;
+    color: white;
+}
+
+.screenItem_componentDidUpdate {
+    background-color: IndianRed;
+    color: white;
+}
+
+.screenItem_shouldComponentUpdate {
+    background-color: SandyBrown;
+    color: white;
+}
+
+.screenItem_componentWillUnmount {
+    background-color: Indigo  ;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
