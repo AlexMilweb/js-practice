@@ -8,6 +8,7 @@ import Header from '../Header/Header';
 import ContactsSearch from '../../pages/ContactsSearch/ContactsSearch';
 import Main from '../../pages/Main/Main';
 import LifeCycle from '../../pages/LifeCycle/LifeCycle';
+import NotesApp from '../../pages/NotesApp/NotesApp';
 
 export default class App extends PureComponent {
   render() {
@@ -19,6 +20,7 @@ export default class App extends PureComponent {
           <Route exact path='/' component={Main} />
           <Route path='/contacts-search/' component={ContactsSearch} />
           <Route path='/life-cycle/' component={LifeCycle} />
+          <Route path='/notes-app/' component={NotesApp} />
 
         </div>
       </Router>
