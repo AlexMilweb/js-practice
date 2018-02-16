@@ -1,0 +1,19 @@
+.noteEditor {
+    margin-bottom: 30px;
+}
+
+.noteEditor__textarea {
+    padding: 20px;
+    width: 100%;
+    height: 150px;
+    font-size: 17px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.noteEditor__actions {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
