@@ -13,6 +13,11 @@ export default class Note extends PureComponent {
         color: '#3bd63b'
     }
 
+    handleNoteDelete = () => {
+        const id = this.props.id;
+        this.props.onDelete(id);
+    }
+
     render() {
         const { id, noteText, color } = this.props;
 
@@ -22,6 +27,7 @@ export default class Note extends PureComponent {
                 key={id}
                 style={{ backgroundColor: color }}
             >
+                <button onClick={this.handleNoteDelete} className='note__delete'>x</button>
                 {noteText}
             </li>
         );

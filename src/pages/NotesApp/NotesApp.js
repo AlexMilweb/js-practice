@@ -1,29 +1,25 @@
 import React, { PureComponent } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row } from 'react-bootstrap';
 import NoteEditor from './NoteEditor/NoteEditor';
 import NotesGrid from './NotesGrid/NotesGrid';
 
-const notes = [
-    {
-        id: 1,
-        noteText: 'Текст заметки 1',
-        color: '#3bd63b'
-    },
-    {
-        id: 2,
-        noteText: 'Текст заметки 2',
-        color: '#f1f424'
-    },
-    {
-        id: 3,
-        noteText: 'Текст заметки 3',
-        color: '#6c6af2'
-    }
-];
-
 export default class NotesApp extends PureComponent {
     state = {
-        notes: notes
+        notes: []
+    }
+
+    componentDidMount() {
+        const localNotes = JSON.parse(localStorage.getItem('notes'));
+
+        if (localNotes) {
+            this.setState({
+                notes: localNotes
+            });
+        }
+    }
+
+    componentDidUpdate() {
+        this.updateLocalStorage();
     }
 
     handleNoteAdd = newNote => {
@@ -35,14 +31,36 @@ export default class NotesApp extends PureComponent {
         });
     }
 
+    handleNoteDelete = noteId => {
+        const newNotes = this.state.notes.filter(note => {
+            return note.id !== noteId;
+        });
+
+        this.setState({
+            notes: newNotes
+        });
+    }
+
+    updateLocalStorage = () => {
+        const notes = JSON.stringify(this.state.notes);
+
+        localStorage.setItem('notes', notes);
+    }
+
     render() {
-        const { notes } = this.state;
+        const { notes, colorNote } = this.state;
 
         return (
             <Grid>
                 <Row>
-                    <NoteEditor onNoteAdd={this.handleNoteAdd} />
-                    <NotesGrid notesArray={notes} />
+                    <NoteEditor
+                        onNoteAdd={this.handleNoteAdd}
+                    />
+                    <NotesGrid
+                        onDelete={this.handleNoteDelete}
+                        notesArray={notes}
+                        colorNote={colorNote}
+                    />
                 </Row>
             </Grid>
         );

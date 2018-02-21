@@ -1,8 +1,17 @@
 import React, { PureComponent } from 'react';
 import { func } from 'prop-types';
 import { Button } from 'react-bootstrap';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import './NoteEditor.css';
+
+const colors = [
+    '#e06d6d',
+    '#3fd370',
+    '#54f2ef',
+    '#706eea',
+    '#f6ff00',
+    '#fcaf16'
+];
 
 export default class NoteEditor extends PureComponent {
     static propTypes = {
@@ -10,7 +19,8 @@ export default class NoteEditor extends PureComponent {
     }
 
     state = {
-        textValue: ''
+        textValue: '',
+        noteColor: 'yellow'
     }
 
     handleChangeValue = e => {
@@ -22,11 +32,46 @@ export default class NoteEditor extends PureComponent {
     handleNoteAdd = () => {
         const newNote = {
             id: Date.now(),
-            color: 'yellow',
+            color: this.state.noteColor,
             noteText: this.state.textValue
         }
 
         this.props.onNoteAdd(newNote);
+        this.setState({
+            textValue: ''
+        });
+    }
+
+    handleGetColor = color => () => {
+        this.setState({
+            noteColor: color
+        });
+    }
+
+    handleActiveColor = e => {
+        const activeElement = e.currentTarget.querySelector('.noteEditor__colorButton_active');
+
+        if (activeElement !== null && e.target !== e.currentTarget) {
+            activeElement.classList.remove('noteEditor__colorButton_active');
+        }
+
+        if (e.target !== e.currentTarget) {
+            e.target.classList.add('noteEditor__colorButton_active');
+        }
+    }
+
+    renderColorItem = color => {
+        return (
+            <li key={color} className='noteEditor__colorItem'>
+                <button
+                    style={{
+                        backgroundColor: color
+                    }}
+                    className='noteEditor__colorButton'
+                    onClick={this.handleGetColor(color)}
+                ></button>
+            </li>
+        );
     }
 
     render() {
@@ -47,6 +92,9 @@ export default class NoteEditor extends PureComponent {
                             <Button onClick={this.handleNoteAdd}>
                                 Добавить заметку
                             </Button>
+                            <ul onClick={this.handleActiveColor} className='noteEditor__colorsList'>
+                                {colors.map(this.renderColorItem)}
+                            </ul>
                         </div>
                     </Col>
                 </Row>

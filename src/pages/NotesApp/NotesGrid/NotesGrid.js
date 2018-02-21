@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
-import { array } from 'prop-types';
+import { array, func } from 'prop-types';
 import Note from '../Note/Note';
 import Masonry from 'masonry-layout';
 import './NotesGrid.css';
 
 export default class NotesGrid extends PureComponent {
     static propTypes = {
-        notesArray: array.isRequired
+        notesArray: array.isRequired,
+        onDelete: func.isRequired
     }
 
     componentDidUpdate(prevProps) {
@@ -19,7 +20,6 @@ export default class NotesGrid extends PureComponent {
     componentDidMount() {
         this.msnry = new Masonry( this.grid, {
             itemSelector: '.note',
-            columnWidth: 200,
             gutter: 10
         });
     }
@@ -29,7 +29,7 @@ export default class NotesGrid extends PureComponent {
     }
 
     render() {
-        const { notesArray } = this.props;
+        const { notesArray, onDelete } = this.props;
 
         return (
             <div>
@@ -38,8 +38,10 @@ export default class NotesGrid extends PureComponent {
                         return (
                             <Note
                                 key={note.id}
+                                id={note.id}
                                 noteText={note.noteText}
                                 color={note.color}
+                                onDelete={onDelete}
                             />
                         );
                     })}

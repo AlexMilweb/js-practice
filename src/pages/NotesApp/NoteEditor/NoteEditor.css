@@ -17,3 +17,24 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.noteEditor__colorsList {
+    display: flex;
+}
+
+.noteEditor__colorItem {
+    margin-right: 10px;
+}
+
+.noteEditor__colorButton {
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    outline: none;
+    transition: box-shadow 0.3s;
+}
+
+.noteEditor__colorButton_active {
+    box-shadow: 0 0 0 4px #555;
+}

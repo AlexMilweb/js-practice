@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 import './Main.css';
 
 export default class Main extends PureComponent {
